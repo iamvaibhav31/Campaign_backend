@@ -32,6 +32,7 @@ const createCampaignService = async (params, callback) => {
   try {
     const {
       name,
+      desc,
       budget,
       image_base64,
       noofclicks,
@@ -40,6 +41,7 @@ const createCampaignService = async (params, callback) => {
       lat,
       long,
       platform,
+      productID
     } = params;
 
     const images = new imageSchema({
@@ -57,7 +59,9 @@ const createCampaignService = async (params, callback) => {
         lat,
         long
       },
-      platform
+      platform,
+      desc,
+      product_id:productID
     });
 
     await campaign.save();

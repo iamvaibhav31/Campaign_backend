@@ -48,6 +48,7 @@ const getAllCampaign = async (req, res, next) => {
 
 const createCampaign = async (req, res, next) => {
   try {
+    
     await createCampaignService(req.body, (err, result) => {
       if (!err) {
         return res.status(201).json(result);

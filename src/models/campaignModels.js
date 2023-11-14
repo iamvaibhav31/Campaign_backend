@@ -15,15 +15,17 @@ const campaignSchema = new mongoose.Schema(
     product_id:{
       type: mongoose.Schema.ObjectId,
       ref: modelsName.PRODUCTS,
+      required: [true , "Please select Product for campaign"],
     },
     images: imageSchema,
     noofclicks: {
       type: Number,
-      required: true,
+      default:0
     },
     budget: {
       type: Number,
       default: 0,
+      required: [true , "Please select budget for campaign"],
     },
     location: {
       lat: {
