@@ -34,31 +34,19 @@ const createCampaignService = async (params, callback) => {
       name,
       desc,
       budget,
-      image_base64,
       noofclicks,
-      startdate,
-      enddate,
-      lat,
-      long,
+      location,
+      range,
       platform,
       productID
     } = params;
 
-    const images = new imageSchema({
-      url: image_base64,
-    });
-
     const campaign = new CampaignModel({
       name,
-      images,
       budget,
       noofclicks,
-      startingDate:startdate,
-      endingDate:enddate,
-      location:{
-        lat,
-        long
-      },
+      range,
+      location,
       platform,
       desc,
       product_id:productID

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { modelsName } from "../utils/constants.js";
-import imageSchema from "./imageModel.js";
+
 
 const campaignSchema = new mongoose.Schema(
   {
@@ -17,7 +17,6 @@ const campaignSchema = new mongoose.Schema(
       ref: modelsName.PRODUCTS,
       required: [true , "Please select Product for campaign"],
     },
-    images: imageSchema,
     noofclicks: {
       type: Number,
       default:0
@@ -32,20 +31,21 @@ const campaignSchema = new mongoose.Schema(
         type: Number,
         required: true,
       },
-      long: {
+      lon: {
         type: Number,
         required: true,
       },
     },
-    startingDate: {
-      type: Date,
-      required: true,
+    range:{
+      start: {
+        type: Date,
+        required: true,
+      },
+      end: {
+        type: Date,
+        required: true,
+      },
     },
-    endingDate: {
-      type: Date,
-      required: true,
-    },
-
     platform: {
       type: String,
       required: true,
@@ -61,3 +61,13 @@ const campaignSchema = new mongoose.Schema(
 );
 
 export default mongoose.model(modelsName.CAMPAIGN, campaignSchema);
+
+
+// name: "", 
+// desc: "",
+// budget: 0,
+// radius: 0,
+// platform: "",
+// range: {},
+// location: {},
+// productID: ""
