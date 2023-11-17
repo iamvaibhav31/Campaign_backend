@@ -1,7 +1,8 @@
 import {
   createCampaignService,
   getAllCampaignServices,
-  deleteCampaignService
+  deleteCampaignService,
+  updateCampaignStatusServices
 } from "../services/campaignServices.js";
 import ErrorHandles from "../utils/error.js";
 
@@ -60,6 +61,20 @@ const createCampaign = async (req, res, next) => {
   }
 };
 
+const updateCampaignStatus = async (req, res, next) => {
+  try {
+    await updateCampaignStatusServices(req.query, (err, result) => {
+      if (err) {
+        return next(new ErrorHandles(err?.message, 400));
+      } else {
+        return res.status(200).json(result);
+      }
+    });
+  } catch (error) {
+    return next(new ErrorHandles(error?.message, 400));
+  }
+};
+
 const deleteCampaign = async (req, res, next) => {
     try {
       await deleteCampaignService(req.query, (err, result) => {
@@ -74,4 +89,4 @@ const deleteCampaign = async (req, res, next) => {
     }
   };
 
-export { createCampaign , getAllCampaign , deleteCampaign};
+export { createCampaign , getAllCampaign , deleteCampaign , updateCampaignStatus};

@@ -4,9 +4,6 @@ const getDBURI = () =>{
     return process.env.ENVIROMENT === "development" ? process.env.DEV_DB_URI : process.env.PROD_DB_URI 
 }
 
-
-// 
-
 // mongodb+srv://vaibhavsharamofficial31:6MyNm7u4L1gUtUhe@cluster0.bxqnucs.mongodb.net/?retryWrites=true&w=majority
 
 const DBConnection = () =>{

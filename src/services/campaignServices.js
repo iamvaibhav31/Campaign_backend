@@ -66,11 +66,29 @@ const createCampaignService = async (params, callback) => {
   }
 };
 
+const updateCampaignStatusServices= async (params,callback)=>{
+  try {
+    const { id , status } = params;
+    await CampaignModel.findByIdAndUpdate(id, {
+      status
+    })
+    return callback(false, {
+      success: true,
+      message: "Campaign Status Changed Successfully",
+    });
+  } catch (error) {
+    return callback({
+      success: false,
+      message: error?.message,
+    });
+  }
+}
+
 const deleteCampaignService = async (params, callback) => {
   try {
     const { id } = params;
 
-    await CampaignModel.deleteOne({ _id: id });
+    await CampaignModel.findByIdAndDelete({ _id: id });
 
     return callback(false, {
       success: true,
@@ -84,4 +102,4 @@ const deleteCampaignService = async (params, callback) => {
   }
 };
 
-export {getAllCampaignServices, createCampaignService , deleteCampaignService};
+export {getAllCampaignServices, createCampaignService , deleteCampaignService , updateCampaignStatusServices};
